@@ -42,6 +42,42 @@ These instructions will get you a copy of the Docker project up and running on y
 - Server will start running at `localhost:8000`
 - `Ctrl+C` to stop
 
+
+Note: If you are using Windows 10 Home Edition, please use the steps below to get the repo running using docker-toolkit.
+
+## Setup repo in Windows 10 Home Edition using docker-toolkit
+Docker requires Hyper-V virtualization enabled and also Windows 10 pro if using the Windows OS.
+However docker can be run using docker-toolkit which uses a linux VM to run it on.
+
+1. Install docker-toolkit from docker.com
+Note: If you have Oracle Virtual Box already installed, you can uncheck Virtual Box in the setup dialog.
+
+2. Once done, run the docker quickstart terminal that should appear on the desktop. It will take some time to setup the terminal.
+Note the IP that comes up under the whale. A line like: docker is configured to use the default machine with IP 192.XXX.XX.XXX
+
+3. If you have not cloned the repo yet, please do so and navigate to that location using the docker terminal.
+
+4. Also navigate to the same location using file explorer and right click and edit the docker-compose.yaml file.
+
+5. There should be a section called volumes: under web: as below, remove that completely
+	volumes:
+      - .:/code  
+	  
+6. Next run the commands below one after the other in the docker terminal:
+	docker-compose up -d --build
+	docker-compose up
+
+Note: if something breaks or shows up as an error, run the following command to check logs:  docker-compose logs -f
+
+7. You should see lines similar to below in the terminal if everything is fine:
+	web_1    | Starting development server at http://0.0.0.0:8000/
+	web_1    | Quit the server with CONTROL-C.
+	
+8. Next, open your browser and get the IP you got in step 2 above and navigate to http://IP:8000
+
+9. You should the site come up.
+
+
 #### Troubleshooting Docker
 * Incompatible docker version
 
